@@ -19,6 +19,7 @@ public class MinseweperGame extends JPanel
     public final int NUMROWS = 10;
     public final int NUMCOLS = 10;
     public final int NUMBOMBS = 25;
+    private int numOpen = 0;
     
     // The grid!
     MinsewepButton grid[][] = new MinsewepButton[NUMROWS][NUMCOLS]; 
@@ -92,6 +93,15 @@ public class MinseweperGame extends JPanel
                 if(buttonClicked.getValue() == 0)
                 {
                     openZero(row, col);
+                }
+                if (buttonClicked.getValue() == -1)
+                {
+                    JOptionPane.showMessageDialog(null, "Yikes, you lost :(");
+                }
+                numOpen++;
+                if(numOpen == NUMROWS * NUMCOLS - NUMBOMBS)
+                {
+                    JOptionPane.showMessageDialog(null, "Game Over. You Won! Congrats!");
                 }
             }
             else if (e.getButton() == MouseEvent.BUTTON3)  // Right Button
